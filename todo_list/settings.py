@@ -16,6 +16,8 @@ import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,11 +27,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+environment = os.getenv('ENVIRONMENT', 'development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['todo-list-site.herokuapp.com', '127.0.0.1']
+if environment == 'development':
+    
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+      }
+    }
+elif environment == 'production':
+    DEBUG = False
+    ALLOWED_HOSTS = ['todo-list-site.herokuapp.com', '127.0.0.1']
+    DATABASES ={}
+    DATABASES['default'] = dj_database_url.config()
 
 
 # Application definition
