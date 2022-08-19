@@ -30,7 +30,6 @@ pyparsing==3.0.8
 pypiwin32==223
 python-dateutil==2.8.2
 python-dotenv==0.20.0
-pywin32==303
 pyzmq==22.3.0
 six==1.16.0
 sqlparse==0.4.2
