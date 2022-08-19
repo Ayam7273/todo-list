@@ -30,6 +30,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 environment = os.getenv('ENVIRONMENT', 'development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+ALLOWED_HOSTS = ['t0-d0-task.herokuapp.com']
 if environment == 'Development':
     
     DATABASES = {
