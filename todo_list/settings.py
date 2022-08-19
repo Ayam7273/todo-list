@@ -39,7 +39,7 @@ if environment == 'development':
       }
     }
 elif environment == 'production':
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ['todo-list-site.herokuapp.com', '127.0.0.1']
     DATABASES ={}
     DATABASES['default'] = dj_database_url.config()
