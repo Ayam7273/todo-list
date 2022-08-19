@@ -30,17 +30,16 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 environment = os.getenv('ENVIRONMENT', 'development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if environment == 'development':
+if environment == 'Development':
     
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-      }
+        'default': {
+
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-elif environment == 'production':
-    DEBUG = False
-    ALLOWED_HOSTS = ['todo-list-site.herokuapp.com', '127.0.0.1']
+elif environment == 'Production':
     DATABASES ={}
     DATABASES['default'] = dj_database_url.config()
 
@@ -53,16 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages', 
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'base',
-    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
