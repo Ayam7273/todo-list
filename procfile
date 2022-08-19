@@ -1,2 +1,2 @@
-web:gunicorn -b todo_list.wsgi
+web:gunicorn todo_list.wsgi
 release: python manage.py migrate
